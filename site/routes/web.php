@@ -14,3 +14,23 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/modems', 'ModemController@getModems');
+
+Route::get('/modem/get/{id}', 'ModemController@getModem');
+
+Route::get('/modem/delete/{id}', 'ModemController@deleteModem');
+
+Route::post('/modem/add', 'ModemController@addModem');
+
+Route::post('/modem/update', 'ModemController@updateModem');
+
+

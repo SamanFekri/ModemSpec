@@ -17,11 +17,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'ModemController@getAllModems')->name('home');
+Route::get('/modem/new', 'ModemController@getNewModemView');
+Route::post('/modem/new/submit', 'ModemController@submitModem');
 
-Auth::routes();
+Route::get('/modem/spec/{id}', 'ModemController@getModemSpec');
+Route::post('/modem/spec/change/{id}', 'ModemController@submitModemChange');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/modem/remove/{id}', 'ModemController@removeModem');
+
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/modems', 'ModemController@getModems');
 

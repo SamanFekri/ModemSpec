@@ -11,7 +11,7 @@
                         <button type="button" class="btn btn-success col-md-3"
                                 onclick="window.location = '/modem/new'"
                                 style="position: absolute; right: 50px; margin-top: 10px;">
-                            Add Modemst
+                            Add Modem
                         </button>
                     </div>
 

@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         tf = Typeface.createFromAsset(getAssets(), "font.ttf");
-        ((TextView) findViewById(R.id.business_name_textview)).setTypeface(tf);
+//        ((TextView) findViewById(R.id.business_name_textview)).setTypeface(tf);
 
         // recycler view
         recyclerView = findViewById(R.id.recyclerview);
@@ -168,12 +168,14 @@ public class MainActivity extends AppCompatActivity {
                                 .apply(RequestOptions.fitCenterTransform().placeholder(R.drawable.modem))
                                 .into((ImageView) findViewById(R.id.modem_imageview));
                     }
-                    ((TextView) findViewById(R.id.business_name_textview)).setText(result.getString("business_name"));
+                    fastAdapter.add(new SimpleItem("نام تجاری", result.getString("business_name"), tf));
                     JSONArray features = result.getJSONArray("features");
                     JSONObject feature = null;
                     for (int i = 0; i < features.length(); i++) {
                         feature = features.getJSONObject(i);
-                        if (!feature.getString("value").equalsIgnoreCase("")) {
+                        if (!(feature.getString("value").equalsIgnoreCase("")
+                                || feature.getString("value") == null
+                                || feature.getString("value").equalsIgnoreCase("null"))) {
                             fastAdapter.add(new SimpleItem(feature.getString("farsi"),
                                     feature.getString("value"), tf));
                         }

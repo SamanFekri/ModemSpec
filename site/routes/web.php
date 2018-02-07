@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/register', 'ModemController@getAllModems')->name('home');
+Route::get('/register', function (){
+    abort(403);
+});
 Route::get('/','ModemController@getAllModems')->name('home');
 
 Auth::routes();

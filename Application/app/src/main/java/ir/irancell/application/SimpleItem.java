@@ -54,7 +54,7 @@ public class SimpleItem extends AbstractItem<SimpleItem, SimpleItem.ViewHolder> 
 
         @Override
         public void bindView(SimpleItem item, List<Object> payloads) {
-            name.setText(item.name);
+            name.setText(item.name + ": ");
             description.setText(item.description);
             name.setTypeface(item.tf);
             description.setTypeface(item.tf);

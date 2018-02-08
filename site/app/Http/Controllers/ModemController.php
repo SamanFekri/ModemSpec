@@ -76,7 +76,7 @@ class ModemController extends Controller
 
     function getModems()
     {
-        $modems = Modem::get();
+        $modems = Modem::get(['_id', 'business_name']);
         return response()->json($modems, 200);
     }
 

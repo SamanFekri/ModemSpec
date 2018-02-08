@@ -20,9 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@id/key_textview"
-        android:gravity="right"
         android:textSize="20sp"
         android:layout_margin="5dp"
-        android:maxWidth="200dp"
         android:text="Value" />
 </RelativeLayout>

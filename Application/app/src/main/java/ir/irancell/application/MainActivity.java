@@ -2,9 +2,11 @@ package ir.irancell.application;
 
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private int state = 0;
     private ModemSelectorDialog modemSelectorDialog;
     private Typeface tf;
+    private WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
         // recycler view
         recyclerView = findViewById(R.id.recyclerview);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this,
+                DividerItemDecoration.VERTICAL));
 //        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(llm); // set LayoutManager to RecyclerView
@@ -65,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(fastAdapter);
 
         // webview
-        WebView webView = findViewById(R.id.speed_test_webview);
+        webView = findViewById(R.id.speed_test_webview);
         webView.setWebViewClient(new WebViewClient());
         webView.setWebChromeClient(new WebChromeClient());
 
@@ -76,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         settings.setAllowFileAccess(true);
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
+        settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
 
         webView.loadUrl(Constant.SPEED_TEST_URL);
 
@@ -88,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //listen to onclick listeners
+        ((ImageView)findViewById(R.id.modem_spec_imageview)).setColorFilter(Color.parseColor("#FFBE00"));
         findViewById(R.id.modem_spec_imageview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,8 +102,14 @@ public class MainActivity extends AppCompatActivity {
                     state = 0;
                     findViewById(R.id.modem_spec_layout).setVisibility(View.VISIBLE);
                     findViewById(R.id.webview_layout).setVisibility(View.GONE);
+
                     findViewById(R.id.modem_spec_imageview).setBackgroundColor(getResources().getColor(R.color.shadow));
+                    ((ImageView)findViewById(R.id.modem_spec_imageview)).setColorFilter(Color.parseColor("#FFBE00"));
+
                     findViewById(R.id.test_speed_imageview).setBackgroundColor(getResources().getColor(R.color.transparent));
+                    ((ImageView)findViewById(R.id.test_speed_imageview)).setColorFilter(Color.parseColor("#FFFFFF"));
+
+
                 }
             }
         });
@@ -109,7 +122,12 @@ public class MainActivity extends AppCompatActivity {
                     findViewById(R.id.modem_spec_layout).setVisibility(View.GONE);
                     findViewById(R.id.webview_layout).setVisibility(View.VISIBLE);
                     findViewById(R.id.modem_spec_imageview).setBackgroundColor(getResources().getColor(R.color.transparent));
+                    ((ImageView)findViewById(R.id.modem_spec_imageview)).setColorFilter(Color.parseColor("#FFFFFF"));
+
                     findViewById(R.id.test_speed_imageview).setBackgroundColor(getResources().getColor(R.color.shadow));
+                    ((ImageView)findViewById(R.id.test_speed_imageview)).setColorFilter(Color.parseColor("#FFBE00"));
+
+                    webView.loadUrl(Constant.SPEED_TEST_URL);
                 }
             }
         });
@@ -157,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("SKings", result.toString());
                 } catch (Exception e) {
                     Log.d("SKings", "getModem@onbackground");
+                    e.printStackTrace();
                 }
             }
 

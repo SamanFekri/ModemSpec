@@ -61,6 +61,7 @@ public class ModemSelectorDialog extends Dialog {
     public void show() {
         super.show();
         getModems();
+        Log.d("SKings", "salam2");
     }
 
     @Override
@@ -79,6 +80,7 @@ public class ModemSelectorDialog extends Dialog {
 
             @Override
             public void onBackgroundResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Log.d("SKings", "salam");
                 try {
                     result = new JSONArray(response.body().string());
                     Log.d("SKings", result.toString());

@@ -155,6 +155,13 @@
                         {!! Form::textarea('features[19][value]'
                          , isset($modem->features[19]['value']) ? $modem->features[19]['value'] :  ''
                          , ['class' => 'form-control']) !!}
+
+
+                        {!! Form::hidden('features[20][farsi]', 'قیمت') !!}
+                        {!! Form::label('features[20][value]', 'قیمت: ') !!}
+                        {!! Form::text('features[20][value]'
+                         , isset($modem->features[20]['value']) ? $modem->features[20]['value'] :  ''
+                         , ['class' => 'form-control']) !!}
                         <br/>
 
                         {!! Form::submit('Submit', ['class' => 'btn btn-info']) !!}

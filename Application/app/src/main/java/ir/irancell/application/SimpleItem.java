@@ -2,8 +2,12 @@ package ir.irancell.application;
 
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.items.AbstractItem;
@@ -15,7 +19,7 @@ public class SimpleItem extends AbstractItem<SimpleItem, SimpleItem.ViewHolder> 
     public String description;
     public Typeface tf;
 
-    public SimpleItem (String name, String description, Typeface tf){
+    public SimpleItem(String name, String description, Typeface tf) {
         this.name = name;
         this.description = description;
         this.tf = tf;
@@ -45,17 +49,30 @@ public class SimpleItem extends AbstractItem<SimpleItem, SimpleItem.ViewHolder> 
 
         TextView name;
         TextView description;
+        View view;
 
         public ViewHolder(View view) {
             super(view);
             name = view.findViewById(R.id.key_textview);
             description = view.findViewById(R.id.value_textview);
+            this.view = view;
         }
 
         @Override
         public void bindView(SimpleItem item, List<Object> payloads) {
-            name.setText(item.name + ": ");
-            description.setText(item.description);
+            name.setText(item.name);
+//            RelativeLayout rl = (RelativeLayout) description.getParent();
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) description.getLayoutParams();
+            if (item.description.contains("\n")) {
+                params.addRule(RelativeLayout.LEFT_OF, 0);
+                params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                description.setText(("\n" + item.description).replace("\n", "\n  "));
+            } else {
+                params.addRule(RelativeLayout.LEFT_OF, name.getId());
+                params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 0);
+                description.setText(item.description);
+            }
+
             name.setTypeface(item.tf);
             description.setTypeface(item.tf);
         }
@@ -66,4 +83,5 @@ public class SimpleItem extends AbstractItem<SimpleItem, SimpleItem.ViewHolder> 
             description.setText(null);
         }
     }
+
 }

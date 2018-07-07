@@ -109,6 +109,11 @@
                         {!! Form::hidden('features[19][farsi]', 'سایر مشخصات') !!}
                         {!! Form::label('features[19][value]', 'سایر مشخصات: ') !!}
                         {!! Form::textarea('features[19][value]','', ['class' => 'form-control']) !!}
+
+
+                        {!! Form::hidden('features[20][farsi]', 'قیمت') !!}
+                        {!! Form::label('features[20][value]', 'قیمت: ') !!}
+                        {!! Form::text('features[20][value]','', ['class' => 'form-control']) !!}
                         <br/>
                         {!! Form::label('image', 'عکس محصول: ') !!}
                         {!! Form::file('image'); !!}

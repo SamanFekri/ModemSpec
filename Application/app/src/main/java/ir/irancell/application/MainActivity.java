@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -56,10 +57,14 @@ public class MainActivity extends AppCompatActivity {
 
         // recycler view
         recyclerView = findViewById(R.id.recyclerview);
-        recyclerView.addItemDecoration(new DividerItemDecoration(this,
-                DividerItemDecoration.VERTICAL));
+        DividerItemDecoration divider = new DividerItemDecoration(this,
+                DividerItemDecoration.VERTICAL);
+        divider.setDrawable(ContextCompat.getDrawable(this, R.drawable.divider));
+        recyclerView.addItemDecoration(divider);
+        recyclerView.setScrollbarFadingEnabled(false);
+
 //        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
+        LinearLayoutManager llm = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(llm); // set LayoutManager to RecyclerView
 
         //create our FastAdapter which will manage everything
@@ -94,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //listen to onclick listeners
-        ((ImageView)findViewById(R.id.modem_spec_imageview)).setColorFilter(Color.parseColor("#FFBE00"));
+        ((ImageView) findViewById(R.id.modem_spec_imageview)).setColorFilter(Color.parseColor("#FFBE00"));
         findViewById(R.id.modem_spec_imageview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,10 +109,10 @@ public class MainActivity extends AppCompatActivity {
                     findViewById(R.id.webview_layout).setVisibility(View.GONE);
 
                     findViewById(R.id.modem_spec_imageview).setBackgroundColor(getResources().getColor(R.color.shadow));
-                    ((ImageView)findViewById(R.id.modem_spec_imageview)).setColorFilter(Color.parseColor("#FFBE00"));
+                    ((ImageView) findViewById(R.id.modem_spec_imageview)).setColorFilter(Color.parseColor("#FFBE00"));
 
                     findViewById(R.id.test_speed_imageview).setBackgroundColor(getResources().getColor(R.color.transparent));
-                    ((ImageView)findViewById(R.id.test_speed_imageview)).setColorFilter(Color.parseColor("#FFFFFF"));
+                    ((ImageView) findViewById(R.id.test_speed_imageview)).setColorFilter(Color.parseColor("#000000"));
 
 
                 }
@@ -122,10 +127,10 @@ public class MainActivity extends AppCompatActivity {
                     findViewById(R.id.modem_spec_layout).setVisibility(View.GONE);
                     findViewById(R.id.webview_layout).setVisibility(View.VISIBLE);
                     findViewById(R.id.modem_spec_imageview).setBackgroundColor(getResources().getColor(R.color.transparent));
-                    ((ImageView)findViewById(R.id.modem_spec_imageview)).setColorFilter(Color.parseColor("#FFFFFF"));
+                    ((ImageView) findViewById(R.id.modem_spec_imageview)).setColorFilter(Color.parseColor("#000000"));
 
                     findViewById(R.id.test_speed_imageview).setBackgroundColor(getResources().getColor(R.color.shadow));
-                    ((ImageView)findViewById(R.id.test_speed_imageview)).setColorFilter(Color.parseColor("#FFBE00"));
+                    ((ImageView) findViewById(R.id.test_speed_imageview)).setColorFilter(Color.parseColor("#FFBE00"));
 
                     webView.loadUrl(Constant.SPEED_TEST_URL);
                 }

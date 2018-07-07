@@ -7,7 +7,6 @@
     android:background="@drawable/main"
     tools:context=".MainActivity">
 
-
     <TextView
         android:id="@+id/hidden_tv"
         android:layout_width="50dp"
@@ -26,14 +25,13 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-
         <ImageView
             android:id="@+id/modem_imageview"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@drawable/modem"
             android:layout_marginLeft="100dp"
-            android:layout_marginTop="90dp"
+            android:layout_marginTop="70dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -47,9 +45,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginTop="200dp"
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="350dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="170dp"
+            android:scrollbars="vertical"
+            android:scrollbarThumbVertical="@drawable/scrollbar"
+
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -92,20 +93,19 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
+
         <ImageView
             android:id="@+id/modem_spec_imageview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/shadow"
             android:layout_weight="1"
-            android:padding="10dp"
             android:src="@drawable/modem_spec_icon"/>
         <ImageView
             android:id="@+id/test_speed_imageview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="10dp"
             android:background="@color/transparent"
             android:src="@drawable/speed_test_icon"/>
     </LinearLayout>

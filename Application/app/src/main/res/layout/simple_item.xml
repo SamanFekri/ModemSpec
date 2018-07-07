@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:id="@+id/rl_simple_item"
     android:layout_height="wrap_content">
 
     <TextView
@@ -9,18 +10,29 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_margin="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="5dp"
         android:gravity="right"
         android:textSize="20sp"
         android:text="Key" />
+    <TextView
+        android:id="@+id/two_dot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/key_textview"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:text=":"/>
 
     <TextView
         android:id="@+id/value_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@id/key_textview"
+        android:layout_toLeftOf="@id/two_dot"
         android:textSize="20sp"
         android:layout_margin="5dp"
-        android:text="Value" />
+        android:text="ValueValueValueValueValueValueValueValueValueValueValueValueValueValueValue" />
 </RelativeLayout>
